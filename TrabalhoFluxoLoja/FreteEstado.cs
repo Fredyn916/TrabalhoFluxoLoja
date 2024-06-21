@@ -17,6 +17,8 @@ namespace Trabalho
             Id = id;
             Estado = estado;
             ValorFrete = valorFrete;
+            ValorFrete = valorFrete;
+            ValorFrete = valorFrete;
         }
 
     }
