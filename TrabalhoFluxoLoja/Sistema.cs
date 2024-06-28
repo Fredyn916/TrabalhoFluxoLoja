@@ -12,7 +12,6 @@ namespace Trabalho
         {
             int opcao = -1;
             OpcoesDoUsuario();
-            opcao = int.Parse(Console.ReadLine());
 
             if (opcao == 1)
             {
@@ -35,6 +34,26 @@ namespace Trabalho
 
             }
 
+        }
+
+        private int MenuInical()
+        {
+            int acao = -1;
+            Console.WriteLine("<------- BEM VINDO À LOJA ------->");
+            Console.WriteLine("1 - Compra de um Produto Físico");
+            Console.WriteLine("2 - Compra de um Produto Digital");
+            Console.WriteLine("0 - Sair do Sistema");
+            Console.WriteLine("<-------------------------------->");
+            while (acao != 1 && acao != 2 && acao != 0)
+            {
+                Console.WriteLine("Digite o número respectivo à ação que deseja realizar:");
+                acao = int.Parse(Console.ReadLine());
+                if(acao != 1 && acao != 2 && acao != 0)
+                {
+                    Console.WriteLine("Digite uma opção válida.");
+                }
+            }
+            return acao;
         }
 
         public void Consultar()
