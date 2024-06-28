@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabalhoFluxoLoja
 {
-    public class QuadroProdutos
+    public abstract class QuadroProdutos
     {
         private List<Produto> ProdutosEstoqueFisico { get; set; }
         private List<Produto> ProdutosEstoqueDigital { get; set; }
@@ -58,6 +58,26 @@ namespace TrabalhoFluxoLoja
                 }
             }
             return null;
+        }
+
+        public void ListarProdutoFisico()
+        {
+            Console.WriteLine("<---------- PRODUTOS FÍSICOS ---------->");
+            foreach (ProdutoFisico x in ProdutosEstoqueFisico)
+            {
+                x.ExibirDetalhes();
+            }
+            Console.WriteLine("<-------------------------------------->");
+        }
+
+        public void ListarProdutoDigital()
+        {
+            Console.WriteLine("<---------- PRODUTOS DIGITAIS ---------->");
+            foreach (ProdutoDigital x in ProdutosEstoqueDigital)
+            {
+                x.ExibirDetalhes();
+            }
+            Console.WriteLine("<--------------------------------------->");
         }
     }
 }

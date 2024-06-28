@@ -8,8 +8,7 @@ namespace Trabalho
 {
     internal class Sistema
     {
-        GerenciadorFretes gerenciador = new GerenciadorFretes();
-
+        GerenciadorFretes Gerenciador = new GerenciadorFretes();
 
         public void InicializarSistema()
         {
