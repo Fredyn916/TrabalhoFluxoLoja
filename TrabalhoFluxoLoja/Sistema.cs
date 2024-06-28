@@ -70,8 +70,6 @@ namespace Trabalho
             Console.WriteLine("26 - Tocantis");
             Console.WriteLine("27 - Maranhão");
 
-
-
             idConsulta = int.Parse(Console.ReadLine());
 
             double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
