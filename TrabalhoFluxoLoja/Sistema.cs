@@ -11,8 +11,7 @@ namespace Trabalho
         public void InicializarSistema()
         {
             int opcao = -1;
-            Console.WriteLine("Digite o numero da opção desejada");
-            Console.WriteLine("1 - Consulta de Frete");
+            OpcoesDoUsuario();
             opcao = int.Parse(Console.ReadLine());
 
             if (opcao == 1)
@@ -84,6 +83,15 @@ namespace Trabalho
             }
 
         }
+
+        private void OpcoesDoUsuario()
+        {
+            Console.WriteLine("Digite o numero da opção desejada");
+            Console.WriteLine("1 - Consulta de Frete");
+
+        }
+
+
 
 
     }
