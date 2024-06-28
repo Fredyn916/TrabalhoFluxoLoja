@@ -16,5 +16,9 @@ namespace TrabalhoFluxoLoja
             Plataforma = plataforma;
         }
 
+        public void ExibirDetalhes()
+        {
+
+        }
     }
 }

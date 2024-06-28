@@ -6,4 +6,3 @@ Sistema s = new Sistema();
 GerenciadorFretes gerenciador = new GerenciadorFretes();
 
 s.InicializarSistema();
-
