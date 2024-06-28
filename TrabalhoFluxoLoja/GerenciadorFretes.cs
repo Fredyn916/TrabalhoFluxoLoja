@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Trabalho
 {
-    public class GerenciadorFretes
+    public static class GerenciadorFretes
     {
-        private List<FreteEstado> fretes;
+        private static  List<FreteEstado> fretes = new List<FreteEstado> {
+        new FreteEstado(1, "Acre", 50.00),
+        new FreteEstado(2, "Alagoas", 30.00)
+        new FreteEstado(3, "Amapá", 35.00)
+        };
 
         public GerenciadorFretes()
         {
@@ -44,7 +48,7 @@ namespace Trabalho
 
         }
 
-        public double ConsultarFretePorId(int id)
+        public static double ConsultarFretePorId(int id)
         {
             foreach (var frete in fretes)
             {
