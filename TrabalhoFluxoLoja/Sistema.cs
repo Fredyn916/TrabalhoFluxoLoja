@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Trabalho
 {
-    internal class Sistema
+    public class Sistema
     {
-        GerenciadorFretes gerenciador = new GerenciadorFretes();
-
-
         public void InicializarSistema()
         {
             int opcao = -1;
@@ -77,7 +74,7 @@ namespace Trabalho
 
             idConsulta = int.Parse(Console.ReadLine());
 
-            double valorFrete = gerenciador.ConsultarFretePorId(idConsulta);
+            double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
 
             if (valorFrete != -1)
             {
