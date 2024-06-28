@@ -26,5 +26,16 @@ namespace TrabalhoFluxoLoja
             Tamanho = tamanho;
             FormaPagamento = formaPagamento;
         }
+
+        public virtual void ExibirDetalhes()
+        {
+            Console.WriteLine($"---------- PRODUTO {Id} ----------");
+            Console.WriteLine($"Id: {Id}");
+            Console.WriteLine($"Marca: {Marca}");
+            Console.WriteLine($"Preço: {Preco}");
+            Console.WriteLine($"Quantidade no Estoque: {QuantidadeEstoque}");
+            Console.WriteLine($"Tamanho: {Tamanho}");
+            Console.WriteLine($"Forma de Pagamento: {FormaPagamento}");
+        }
     }
 }

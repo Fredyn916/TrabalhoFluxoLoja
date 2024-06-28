@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TrabalhoFluxoLoja
@@ -16,9 +17,11 @@ namespace TrabalhoFluxoLoja
             Plataforma = plataforma;
         }
 
-        public void ExibirDetalhes()
+        public override void ExibirDetalhes()
         {
-
+            base.ExibirDetalhes();
+            Console.WriteLine($"Plataforma: {Plataforma}");
+            Console.WriteLine($"----------------------------------");
         }
     }
 }

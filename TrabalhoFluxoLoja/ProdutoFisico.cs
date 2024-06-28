@@ -15,5 +15,12 @@ namespace TrabalhoFluxoLoja
         {
             Peso = peso;
         }
+
+        public override void ExibirDetalhes()
+        {
+            base.ExibirDetalhes();
+            Console.WriteLine($"Peso: {Peso}");
+            Console.WriteLine($"----------------------------------");
+        }
     }
 }
