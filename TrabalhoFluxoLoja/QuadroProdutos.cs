@@ -8,8 +8,23 @@ namespace TrabalhoFluxoLoja
 {
     public abstract class QuadroProdutos
     {
+        private List<Usuario> UsuariosCadastrados { get; set; }
         private List<Produto> ProdutosEstoqueFisico { get; set; }
         private List<Produto> ProdutosEstoqueDigital { get; set; }
+
+        public QuadroProdutos()
+        {
+            UsuariosCadastrados = new List<Usuario>();
+            ProdutosEstoqueFisico = new List<Produto>();
+            ProdutosEstoqueDigital = new List<Produto>();
+            CadastroUsuarioLoja();
+            EstoqueProdutos();
+        }
+
+        private void CadastroUsuarioLoja()
+        {
+            UsuariosCadastrados.Add(new Usuario(1, "Funcionário Loja", "funcionarios@loja.com", "Centro Sabará - MG 34505-730"));
+        }
 
         private void EstoqueProdutos()
         {

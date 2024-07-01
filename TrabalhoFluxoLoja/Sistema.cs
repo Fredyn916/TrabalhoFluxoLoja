@@ -11,29 +11,38 @@ namespace Trabalho
         public void InicializarSistema()
         {
             int opcao = -1;
-            OpcoesDoUsuario();
-
-            if (opcao == 1)
+            MenuInical();
+            while(opcao != 0)
             {
-                Consultar();
-            }
-            else if (opcao == 2)
-            {
+                if(opcao == 1)
+                {
+                
+                }
+                else if(opcao== 2) 
+                {
 
-            }
-            else if (opcao == 3)
-            {
+                }
+                if (opcao == 1)
+                {
+                
+                }
+                else if (opcao == 2)
+                {
 
-            }
-            else if (opcao == 4)
-            {
+                }
+                else if (opcao == 3)
+                {
 
-            }
-            else if (opcao == 5)
-            {
+                }
+                else if (opcao == 4)
+                {
 
-            }
+                }
+                else if (opcao == 5)
+                {
 
+                }
+            }
         }
 
         private int MenuInical()

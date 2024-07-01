@@ -13,6 +13,14 @@ namespace TrabalhoFluxoLoja
         private string Email { get; set; }
         private string Endereco { get; set; }
 
+        public Usuario(int id, string nome, string email, string endereco)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Endereco = endereco;
+        }
+
         public void AlterarIdUsuario(int id)
         {
             Id = id;
