@@ -11,7 +11,33 @@ namespace TrabalhoFluxoLoja
         private int Id { get; set; }
         private string Nome { get; set; }
         private string Email { get; set; }
+        private string Password { get; set; }
         private string Endereco { get; set; }
+
+        public Usuario(int id, string nome, string email, string senha,string endereco)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Password = senha;
+            Endereco = endereco;
+        }
+
+        public bool VerficarSenhaId(string senha, int id)
+        {
+            if(id == Id)
+            {
+                if(senha == Password) return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public void AlterarIdUsuario(int id)
         {

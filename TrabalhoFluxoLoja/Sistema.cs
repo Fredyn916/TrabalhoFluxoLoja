@@ -3,37 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrabalhoFluxoLoja;
 
 namespace Trabalho
 {
     public class Sistema
     {
+        public Gerenciador Gerenciador { get; set; }
+        public Sistema()
+        {
+            Gerenciador = new Gerenciador();
+        }
+
         public void InicializarSistema()
         {
             int opcao = -1;
-            OpcoesDoUsuario();
-
-            if (opcao == 1)
+            MenuInical();
+            while(opcao != 0)
             {
-                Consultar();
-            }
-            else if (opcao == 2)
-            {
+                if(opcao == 1)
+                {
+                    opcao = 0;
+                    Login();
+                }
+                else if(opcao == 2) 
+                {
+                    opcao = 0;
+                    if (Gerenciador.CountUsuarios() == 1)
+                    {
 
-            }
-            else if (opcao == 3)
-            {
+                    }
+                    else
+                    {
+                        // logar usuario
+                        // cadastrar usuario
+                    }
+                }
 
-            }
-            else if (opcao == 4)
-            {
+                if (opcao == 1)
+                {
+                
+                }
+                else if (opcao == 2)
+                {
 
-            }
-            else if (opcao == 5)
-            {
+                }
+                else if (opcao == 3)
+                {
 
-            }
+                }
+                else if (opcao == 4)
+                {
 
+                }
+                else if (opcao == 5)
+                {
+
+                }
+            }
         }
 
         private int MenuInical()
@@ -56,7 +83,29 @@ namespace Trabalho
             return acao;
         }
 
-        public void Consultar()
+        private void Login()
+        {
+            Console.WriteLine("<------------ LOGIN ------------>");
+            bool verificacaoSenha = false;
+            while(!verificacaoSenha)
+            {
+                Console.WriteLine("Digite o número id:");
+                int id = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite a senha do login:");
+                string senha = Console.ReadLine();
+                if (Gerenciador.LoginSenha(senha, id))
+                {
+                    Console.WriteLine("Login efetuado com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("Id ou Senha incorreto(s).");
+                }
+            }
+            Console.WriteLine("<------------------------------->");
+        }
+
+        private void Consultar()
         {
             int idConsulta = -1;
             Console.WriteLine("Digite o numero do estado respectivo que deseja consultar");

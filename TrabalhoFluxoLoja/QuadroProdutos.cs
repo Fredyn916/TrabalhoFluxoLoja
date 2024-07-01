@@ -6,10 +6,25 @@ using System.Threading.Tasks;
 
 namespace TrabalhoFluxoLoja
 {
-    public abstract class QuadroProdutos
+    public class QuadroProdutos
     {
-        private List<Produto> ProdutosEstoqueFisico { get; set; }
-        private List<Produto> ProdutosEstoqueDigital { get; set; }
+        public List<Usuario> UsuariosCadastrados { get; set; }
+        public List<Produto> ProdutosEstoqueFisico { get; set; }
+        public List<Produto> ProdutosEstoqueDigital { get; set; }
+
+        public QuadroProdutos()
+        {
+            UsuariosCadastrados = new List<Usuario>();
+            ProdutosEstoqueFisico = new List<Produto>();
+            ProdutosEstoqueDigital = new List<Produto>();
+            CadastroUsuarioLoja();
+            EstoqueProdutos();
+        }
+
+        private void CadastroUsuarioLoja()
+        {
+            UsuariosCadastrados.Add(new Usuario(10000, "Funcionário Loja", "funcionarios@loja.com", "loja123#","Centro Sabará - MG 34505-730"));
+        }
 
         private void EstoqueProdutos()
         {
