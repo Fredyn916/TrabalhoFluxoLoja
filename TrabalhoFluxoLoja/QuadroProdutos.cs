@@ -51,6 +51,13 @@ namespace TrabalhoFluxoLoja
             ProdutosEstoqueDigital.Add(new ProdutoDigital(10, "Adidas", "Adds 2000", 799.00, 10, "Plataforma", 0, "Forma de Pagamento"));
         }
 
+        public void AdicionarUsuario(Usuario x)
+        {
+            int novoID = UsuariosCadastrados.Max(x => x.Id) + 1;
+            x.AlterarIdUsuario(novoID);
+            UsuariosCadastrados.Add(x);
+        }
+
         public Produto BuscarProdutoFisicoPorId(int id)
         {
             foreach (Produto produto in ProdutosEstoqueFisico)

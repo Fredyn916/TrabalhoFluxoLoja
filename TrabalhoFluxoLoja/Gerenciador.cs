@@ -16,6 +16,12 @@ namespace TrabalhoFluxoLoja
         
         public int CountUsuarios() => Quadro.UsuariosCadastrados.Count();
         
+        public void AdicionarUsuario()
+        {
+            Usuario x = CriarUsuario.CriarUmUsuario();
+            Quadro.AdicionarUsuario(x);
+        }
+
         public bool LoginSenha(string senha, int id)
         {
             if (id < 10000)
