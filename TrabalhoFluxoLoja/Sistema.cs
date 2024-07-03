@@ -17,18 +17,24 @@ namespace Trabalho
 
         public void InicializarSistema()
         {
-            int opcao = -1;
+            int opcao1 = -1;
             MenuInical();
-            while(opcao != 0)
+            
+            while(opcao1 != 0)
             {
-                if(opcao == 1)
+                int opcao2 = 0;
+                Console.WriteLine("1- Logar");
+                Console.WriteLine("2- Cadastrar");
+                opcao2 = int.Parse(Console.ReadLine());
+
+                if (opcao2 == 1)
                 {
-                    opcao = 0;
+                    opcao2 = 0;
                     Login();
                 }
-                else if(opcao == 2) 
+                else if(opcao2 == 2) 
                 {
-                    opcao = 0;
+                    opcao2 = 0;
                     if (Gerenciador.CountUsuarios() == 1)
                     {
 
@@ -40,30 +46,10 @@ namespace Trabalho
                     }
                 }
 
-                if (opcao == 1)
-                {
-                
-                }
-                else if (opcao == 2)
-                {
-
-                }
-                else if (opcao == 3)
-                {
-
-                }
-                else if (opcao == 4)
-                {
-
-                }
-                else if (opcao == 5)
-                {
-
-                }
             }
         }
 
-        private int MenuInical()
+        private void MenuInical()
         {
             int acao = -1;
             Console.WriteLine("<------- BEM VINDO À LOJA ------->");
@@ -71,16 +57,17 @@ namespace Trabalho
             Console.WriteLine("2 - Compra de um Produto Digital");
             Console.WriteLine("0 - Sair do Sistema");
             Console.WriteLine("<-------------------------------->");
+
+            acao = int.Parse(Console.ReadLine());
             while (acao != 1 && acao != 2 && acao != 0)
             {
-                Console.WriteLine("Digite o número respectivo à ação que deseja realizar:");
+                
                 acao = int.Parse(Console.ReadLine());
                 if(acao != 1 && acao != 2 && acao != 0)
                 {
                     Console.WriteLine("Digite uma opção válida.");
                 }
             }
-            return acao;
         }
 
         private void Login()
