@@ -18,38 +18,53 @@ namespace Trabalho
         public void InicializarSistema()
         {
             int opcao1 = -1;
-            MenuInical();
             
             while(opcao1 != 0)
             {
-                int opcao2 = 0;
-                Console.WriteLine("1- Logar");
-                Console.WriteLine("2- Cadastrar");
-                opcao2 = int.Parse(Console.ReadLine());
+                opcao1 = MenuInical();
 
-                if (opcao2 == 1)
+                if(opcao1 == 1)
                 {
-                    opcao2 = 0;
                     Login();
                 }
-                else if(opcao2 == 2) 
+                else if(opcao1 == 2)
                 {
-                    opcao2 = 0;
-                    if (Gerenciador.CountUsuarios() == 1)
-                    {
-
-                    }
-                    else
-                    {
-                        // logar usuario
-                        // cadastrar usuario
-                    }
+                    LoginOuCadastro();
                 }
-
             }
         }
 
-        private void MenuInical()
+        private void LoginOuCadastro()
+        {
+            int acao = -1;
+            Console.WriteLine("<-------------------------------->");
+            while (acao != 1 && acao != 2)
+            {
+                Console.WriteLine("1 - Logar");
+                Console.WriteLine("2 - Cadastrar");
+                Console.WriteLine("<-------------------------------->");
+                acao = int.Parse(Console.ReadLine());
+
+                if(acao != 1 && acao != 2)
+                {
+                    Console.WriteLine("Digite uma opção válida");
+                }
+            }
+            if(acao == 1)
+            {
+                Login();
+            }
+            else if(acao == 2)
+            {
+                Gerenciador.AdicionarUsuario();
+            }
+            else
+            {
+                Console.WriteLine("Guilherme é gay");
+            }
+        }
+
+        private int MenuInical()
         {
             int acao = -1;
             Console.WriteLine("<------- BEM VINDO À LOJA ------->");
@@ -68,6 +83,7 @@ namespace Trabalho
                     Console.WriteLine("Digite uma opção válida.");
                 }
             }
+            return acao;
         }
 
         private void Login()
@@ -83,6 +99,7 @@ namespace Trabalho
                 if (Gerenciador.LoginSenha(senha, id))
                 {
                     Console.WriteLine("Login efetuado com sucesso.");
+                    verificacaoSenha = true;
                 }
                 else
                 {
@@ -145,10 +162,6 @@ namespace Trabalho
             Console.WriteLine("1 - Consulta de Frete");
 
         }
-
-
-
-
     }
 }
 
