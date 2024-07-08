@@ -17,6 +17,7 @@ namespace Trabalho
 
         public void InicializarSistema()
         {
+            Usuario usuario;
             int opcao1 = -1;
             
             while(opcao1 != 0)
@@ -25,16 +26,16 @@ namespace Trabalho
 
                 if(opcao1 == 1)
                 {
-                    Login();
+                    usuario = Login();
                 }
                 else if(opcao1 == 2)
                 {
-                    LoginOuCadastro();
+                    usuario = LoginOuCadastro();
                 }
             }
         }
 
-        private void LoginOuCadastro()
+        private Usuario LoginOuCadastro()
         {
             int acao = -1;
             Console.WriteLine("<-------------------------------->");
@@ -52,16 +53,19 @@ namespace Trabalho
             }
             if(acao == 1)
             {
-                Login();
+                return Login();
             }
             else if(acao == 2)
             {
                 Gerenciador.AdicionarUsuario();
+                return Login();
             }
             else
             {
                 Console.WriteLine("Guilherme é gay");
+                return null;
             }
+            return null;
         }
 
         private int MenuInical()
@@ -86,16 +90,18 @@ namespace Trabalho
             return acao;
         }
 
-        private void Login()
+        private Usuario Login()
         {
             Console.WriteLine("<------------ LOGIN ------------>");
             bool verificacaoSenha = false;
-            while(!verificacaoSenha)
+            int id = 0;
+            string senha = string.Empty;
+            while (!verificacaoSenha)
             {
                 Console.WriteLine("Digite o número id:");
-                int id = int.Parse(Console.ReadLine());
+                id = int.Parse(Console.ReadLine());
                 Console.WriteLine("Digite a senha do login:");
-                string senha = Console.ReadLine();
+                senha = Console.ReadLine();
                 if (Gerenciador.LoginSenha(senha, id))
                 {
                     Console.WriteLine("Login efetuado com sucesso.");
@@ -105,8 +111,9 @@ namespace Trabalho
                 {
                     Console.WriteLine("Id ou Senha incorreto(s).");
                 }
-            }
+            }            
             Console.WriteLine("<------------------------------->");
+            return Gerenciador.BuscarUsuario(senha, id);
         }
 
         private void Consultar()
