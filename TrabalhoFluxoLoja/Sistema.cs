@@ -30,6 +30,7 @@ namespace Trabalho
                 }
                 else if(opcao1 == 2)
                 {
+                    Console.Clear();
                     LoginOuCadastro();
                 }
             }
