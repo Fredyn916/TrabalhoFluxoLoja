@@ -37,5 +37,17 @@ namespace TrabalhoFluxoLoja
             }
             return false;
         }
+
+        public Usuario BuscarUsuario(string senha, int id)
+        {
+            foreach(Usuario x in Quadro.UsuariosCadastrados)
+            {
+                if (x.VerficarSenhaId(senha, id))
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
     }
 }
