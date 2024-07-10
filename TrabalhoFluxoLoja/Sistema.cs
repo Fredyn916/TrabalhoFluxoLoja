@@ -31,7 +31,6 @@ namespace Trabalho
                 else if(opcao1 == 2)
                 {
                     usuario = LoginOuCadastro();
-                    LoginOuCadastro();
                 }
             }
         }
