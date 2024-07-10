@@ -25,12 +25,10 @@ namespace Trabalho
 
                 if(opcao1 == 1)
                 {
-                    Console.Clear();
                     Login();
                 }
                 else if(opcao1 == 2)
                 {
-                    Console.Clear();
                     LoginOuCadastro();
                 }
             }
