@@ -15,9 +15,13 @@ namespace TrabalhoFluxoLoja
         private double ValorTotal { get; set; }
         private string Estado { get; set; }
 
-        public Venda()
+        public Venda(int id, Usuario usuario, double valorTotal, string estado)
         {
+            Id = id;
+            Usuario = usuario;
             DataVenda = DateTime.Now;
+            ValorTotal = valorTotal;
+            Estado = estado;
         }
 
         public void AlterarIdVenda(int id)
