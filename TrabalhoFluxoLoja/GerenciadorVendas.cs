@@ -14,5 +14,10 @@ namespace TrabalhoFluxoLoja
         //    x.AlterarIdUsuario(novoID);
         //    UsuariosCadastrados.Add(x);
         //}
+
+        public static void RealizarVenda(Usuario usuario, String estado)
+        {
+
+        }
     }
 }
