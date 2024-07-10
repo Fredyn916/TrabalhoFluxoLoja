@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,50 +117,29 @@ namespace Trabalho
             return Gerenciador.BuscarUsuario(senha, id);
         }
 
-        private void Consultar()
+        private string Consultar()
         {
             int idConsulta = -1;
+
+            GerenciadorFretes.Estados();
             Console.WriteLine("Digite o numero do estado respectivo que deseja consultar");
-            Console.WriteLine("1 - Acre");
-            Console.WriteLine("2 - Alagoas");
-            Console.WriteLine("3 - Amapa");
-            Console.WriteLine("4 - Amazonas");
-            Console.WriteLine("5 - Bahia");
-            Console.WriteLine("6 - Ceará");
-            Console.WriteLine("7 - Distrito Federal");
-            Console.WriteLine("8 - Espírito Santo");
-            Console.WriteLine("9 - Goiás");
-            Console.WriteLine("10 - Mato Grosso");
-            Console.WriteLine("11 - Mato Grosso do Sul");
-            Console.WriteLine("12 - Minas Gerais");
-            Console.WriteLine("13 - Pará");
-            Console.WriteLine("14 - Paraíba");
-            Console.WriteLine("15 - paraná");
-            Console.WriteLine("16 - Pernambuco");
-            Console.WriteLine("17 - Piaui");
-            Console.WriteLine("18 - Rio de Janeiro");
-            Console.WriteLine("19 - Rio Grande do Norte");
-            Console.WriteLine("20 - Rio Grande do Sul");
-            Console.WriteLine("21 - Rondônia");
-            Console.WriteLine("22 - Roraima");
-            Console.WriteLine("23 - Santa Catarina");
-            Console.WriteLine("24 - São Paulo ");
-            Console.WriteLine("25 - Sergipe");
-            Console.WriteLine("26 - Tocantis");
-            Console.WriteLine("27 - Maranhão");
 
             idConsulta = int.Parse(Console.ReadLine());
+            string EstadoFinal = EstadosVenda(idConsulta);
 
-            double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
-
-            if (valorFrete != -1)
+            while (idConsulta !=0 )
             {
-                Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+                double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
+                if (valorFrete != -1)
+                {
+                    Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+                }
+                else
+                {
+                    Console.WriteLine($"Não foi encontrado frete para o estado com ID {idConsulta}");
+                }
             }
-            else
-            {
-                Console.WriteLine($"Não foi encontrado frete para o estado com ID {idConsulta}");
-            }
+            return EstadoFinal;
 
         }
 
@@ -170,7 +150,94 @@ namespace Trabalho
 
         }
 
-
+        private string EstadosVenda(int id)
+        {
+            string Estado = String.Empty;
+            switch (id)
+            {
+                case 1: Estado = "Acre";
+                    break;
+                case 2:
+                    Estado = "Alagoas";
+                    break;
+                case 3:
+                    Estado = "Amapa";
+                    break;
+                case 4:
+                    Estado = "Amazonas";
+                    break;
+                case 5:
+                    Estado = "Bahia";
+                    break;
+                case 6:
+                    Estado = "Ceará";
+                    break;
+                case 7:
+                    Estado = "Distrito Federal";
+                    break;
+                case 8:
+                    Estado = "Espírito Santo";
+                    break;
+                case 9:
+                    Estado = "Goiás";
+                    break;
+                case 10:
+                    Estado = "Mato Grosso";
+                    break;
+                case 11:
+                    Estado = "Mato Grosso do Sul";
+                    break;
+                case 12:
+                    Estado = "Minas Gerais";
+                    break;
+                case 13:
+                    Estado = "Pará";
+                    break;
+                case 14:
+                    Estado = "Paraíba";
+                    break;
+                case 15:
+                    Estado = "paraná";
+                    break;
+                case 16:
+                    Estado = "Pernambuco";
+                    break;
+                case 17:
+                    Estado = "Piaui";
+                    break;
+                case 18:
+                    Estado = "Rio de Janeiro";
+                    break;
+                case 19:
+                    Estado = "Rio Grande do Norte";
+                    break;
+                case 20:
+                    Estado = "Rio Grande do Sul";
+                    break;
+                case 21:
+                    Estado = "Rondônia";
+                    break;
+                case 22:
+                    Estado = "Roraima";
+                    break;
+                case 23:
+                    Estado = "Santa Catarina";
+                    break;
+                case 24:
+                    Estado = "São Paulo";
+                    break;
+                case 25:
+                    Estado = "Sergipe";
+                    break;
+                case 26:
+                    Estado = "Tocantis";
+                    break;
+                case 27:
+                    Estado = "Maranhão";
+                    break;
+            }
+            return Estado;
+        }
     }
 }
 
