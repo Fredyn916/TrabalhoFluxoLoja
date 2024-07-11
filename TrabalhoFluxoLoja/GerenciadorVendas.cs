@@ -15,9 +15,12 @@ namespace TrabalhoFluxoLoja
         //    UsuariosCadastrados.Add(x);
         //}
 
-        public static void RealizarVenda(Usuario usuario, String estado)
+        public static void RealizarVenda(Usuario usuario)
         {
-
+            int Id = 0;
+            double ValorTotalVenda = 0.0;
+            string Estado = string.Empty;
+            DateTime DataVenda = DateTime.Now;
         }
     }
 }
