@@ -63,7 +63,7 @@ namespace Trabalho
             }
             else
             {
-                Console.WriteLine("Guilherme é gay");
+                Console.WriteLine("vsfd");
                 return null;
             }
             return null;
@@ -122,7 +122,6 @@ namespace Trabalho
             string EstadoFinal = String.Empty;
             int idConsulta = -1;
 
-
             while (true)
             {
                 GerenciadorFretes.Estados();
@@ -154,15 +153,9 @@ namespace Trabalho
                     Console.Clear();
                     Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
                 }
-
-
             }
-
             return EstadoFinal;
         }
-
-
-
 
         private void OpcoesDoUsuario()
         {
@@ -261,4 +254,3 @@ namespace Trabalho
         }
     }
 }
-
