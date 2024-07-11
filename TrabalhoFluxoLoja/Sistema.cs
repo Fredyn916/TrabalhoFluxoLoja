@@ -117,31 +117,48 @@ namespace Trabalho
             return Gerenciador.BuscarUsuario(senha, id);
         }
 
-        private string Consultar()
+        public string Consultar()
         {
+            string EstadoFinal = String.Empty;
             int idConsulta = -1;
 
             GerenciadorFretes.Estados();
-            Console.WriteLine("Digite o numero do estado respectivo que deseja consultar");
 
-            idConsulta = int.Parse(Console.ReadLine());
-            string EstadoFinal = EstadosVenda(idConsulta);
-
-            while (idConsulta !=0 )
+            while (true)
             {
+                Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
+                if (!int.TryParse(Console.ReadLine(), out idConsulta))
+                {
+                    Console.WriteLine("Por favor, digite um número válido.");
+                    continue;
+                }
+
+                if (idConsulta == 0)
+                {
+                    break;
+                }
+
                 double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
+
                 if (valorFrete != -1)
                 {
                     Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+                    EstadoFinal = EstadosVenda(idConsulta);
                 }
                 else
                 {
-                    Console.WriteLine($"Não foi encontrado frete para o estado com ID {idConsulta}");
+                    Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
                 }
-            }
-            return EstadoFinal;
 
+                GerenciadorFretes.Estados();
+
+            }
+
+            return EstadoFinal;
         }
+
+
+
 
         private void OpcoesDoUsuario()
         {
