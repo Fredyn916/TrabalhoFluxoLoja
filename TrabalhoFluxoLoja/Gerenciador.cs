@@ -100,6 +100,16 @@ namespace TrabalhoFluxoLoja
             return produtosEscolhidosFisicos;
         }
 
+        public double RecolherValorDosProdutos(List<Produto> listaDosProdutos)
+        {
+            double valorTotal = 0.0;
+            foreach (Produto p in listaDosProdutos)
+            {
+                valorTotal = valorTotal + p.ValorProduto();
+            }
+            return valorTotal;
+        }
+
         public List<Produto> ProdutosEscolhidosDigitais()
         {
             List<Produto> produtosEscolhidosDigitais = new List<Produto>();
