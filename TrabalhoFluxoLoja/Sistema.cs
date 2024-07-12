@@ -21,7 +21,8 @@ namespace Trabalho
             List<Produto> carrinho = new List<Produto>();
             Usuario usuario;
             int opcao1 = -1;
-            string estado
+            string estado = string.Empty;
+            double valorTotal = 0.0;
             
             while(opcao1 != 0)
             {
@@ -48,6 +49,8 @@ namespace Trabalho
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
                 estado = ConsultarRetornarFrete();
+                double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
+                valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
             }
         }
 
@@ -134,7 +137,7 @@ namespace Trabalho
 
         public string ConsultarRetornarFrete()
         {
-            string EstadoFinal = String.Empty;
+            string EstadoFinal = string.Empty;
             int idConsulta = -1;
 
             GerenciadorFretes.Estados();
@@ -153,7 +156,7 @@ namespace Trabalho
                     break;
                 }
 
-                double valorFrete = GerenciadorFretes.RetornarFretePorId(idConsulta);
+                double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
 
                 if (valorFrete != -1)
                 {
@@ -272,4 +275,3 @@ namespace Trabalho
         }
     }
 }
-

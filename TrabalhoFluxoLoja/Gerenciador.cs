@@ -131,6 +131,7 @@ namespace TrabalhoFluxoLoja
                             if(p.Id == id)
                             {
                                 p.RetirarProdutoDoEstoque();
+                                id = -1;
                                 break;
                             }
                         }

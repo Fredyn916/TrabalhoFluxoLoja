@@ -69,17 +69,17 @@ namespace Trabalho
             Console.WriteLine("27 - Maranhão");
         }
 
-        public static double RetornarFretePorId(int id)
+        public static double RetornarFretePorEstado(string estado)
         {
             foreach (var frete in fretes)
             {
-                if (frete.Id == id)
+                if (frete.Estado == estado)
                 {
                     return frete.ValorFrete;
                 }
             }
 
-            return -1;
+            return 0;
         }
 
     }
