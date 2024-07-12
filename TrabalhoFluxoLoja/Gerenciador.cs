@@ -81,7 +81,9 @@ namespace TrabalhoFluxoLoja
                     {
                         Console.WriteLine($"Digite o Id do produto que deseja selecionar");
                         id = int.Parse(Console.ReadLine());
+                        Console.Clear();
                         Console.WriteLine("Produto selecionado com sucesso");
+
                         if (id < 1 && id > 10)
                         {
                             Console.WriteLine("Digite um Id válido");
@@ -100,6 +102,7 @@ namespace TrabalhoFluxoLoja
                 }
                 else if (acao == 2)
                 {
+                    Console.Clear();
                     Console.WriteLine("Seleção Finalizada");
                 }
             }

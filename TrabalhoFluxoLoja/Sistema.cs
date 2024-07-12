@@ -23,18 +23,18 @@ namespace Trabalho
             int opcao1 = -1;
             string estado = string.Empty;
             double valorTotal = 0.0;
-            
-            while(opcao1 != 0)
+
+            while (opcao1 != 0)
             {
                 // Tipo de venda
                 opcao1 = MenuInical();
-
+                Console.Clear();
                 // Login & Cadastro
-                if(opcao1 == 1)
+                if (opcao1 == 1)
                 {
                     usuario = Login();
                 }
-                else if(opcao1 == 2)
+                else if (opcao1 == 2)
                 {
                     usuario = LoginOuCadastro();
                 }
@@ -48,7 +48,9 @@ namespace Trabalho
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
+                Console.WriteLine("<----------------------------->");
                 estado = ConsultarRetornarFrete();
+                Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
             }
@@ -65,16 +67,16 @@ namespace Trabalho
                 Console.WriteLine("<-------------------------------->");
                 acao = int.Parse(Console.ReadLine());
 
-                if(acao != 1 && acao != 2)
+                if (acao != 1 && acao != 2)
                 {
                     Console.WriteLine("Digite uma opção válida");
                 }
             }
-            if(acao == 1)
+            if (acao == 1)
             {
                 return Login();
             }
-            else if(acao == 2)
+            else if (acao == 2)
             {
                 Gerenciador.AdicionarUsuario();
                 return Login();
@@ -99,9 +101,9 @@ namespace Trabalho
             acao = int.Parse(Console.ReadLine());
             while (acao != 1 && acao != 2 && acao != 0)
             {
-                
+
                 acao = int.Parse(Console.ReadLine());
-                if(acao != 1 && acao != 2 && acao != 0)
+                if (acao != 1 && acao != 2 && acao != 0)
                 {
                     Console.WriteLine("Digite uma opção válida.");
                 }
@@ -123,6 +125,7 @@ namespace Trabalho
                 senha = Console.ReadLine();
                 if (Gerenciador.LoginSenha(senha, id))
                 {
+                    Console.Clear();
                     Console.WriteLine("Login efetuado com sucesso.");
                     verificacaoSenha = true;
                 }
@@ -130,7 +133,7 @@ namespace Trabalho
                 {
                     Console.WriteLine("Id ou Senha incorreto(s).");
                 }
-            }            
+            }
             Console.WriteLine("<------------------------------->");
             return Gerenciador.BuscarUsuario(senha, id);
         }
@@ -140,37 +143,28 @@ namespace Trabalho
             string EstadoFinal = string.Empty;
             int idConsulta = -1;
 
-            while (true)
+            GerenciadorFretes.Estados();
+            Console.WriteLine("Digite o número do estado respectivo que deseja consultar");
+            if (!int.TryParse(Console.ReadLine(), out idConsulta))
             {
-                GerenciadorFretes.Estados();
-                Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
-                if (!int.TryParse(Console.ReadLine(), out idConsulta))
-                {
-                    Console.Clear();
-                    Console.WriteLine("Por favor, digite um número válido.");
-                    continue;
-                }
+                Console.Clear();
+                Console.WriteLine("Por favor, digite um número válido.");
+            }
 
-                if (idConsulta == 0)
-                {
-                    break;
-                }
+            double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
 
-                double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
+            if (valorFrete != -1)
+            {
 
-                if (valorFrete != -1)
-                {
+                Console.Clear();
+                Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+                EstadoFinal = EstadosVenda(idConsulta);
+            }
+            else
+            {
 
-                    Console.Clear();
-                    Console.WriteLine($"O frete para o estado é de R${valorFrete}");
-                    EstadoFinal = EstadosVenda(idConsulta);
-                }
-                else
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
-                }
+                Console.Clear();
+                Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
             }
             return EstadoFinal;
         }
@@ -187,7 +181,8 @@ namespace Trabalho
             string Estado = String.Empty;
             switch (id)
             {
-                case 1: Estado = "Acre";
+                case 1:
+                    Estado = "Acre";
                     break;
                 case 2:
                     Estado = "Alagoas";

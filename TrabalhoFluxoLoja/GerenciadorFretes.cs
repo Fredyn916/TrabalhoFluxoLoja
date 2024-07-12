@@ -8,7 +8,7 @@ namespace Trabalho
 {
     public static class GerenciadorFretes
     {
-        private static  List<FreteEstado> fretes = new List<FreteEstado> {
+        private static  List<FreteEstado> frete = new List<FreteEstado> {
         new FreteEstado(1, "Acre", 50.00),
         new FreteEstado(2, "Alagoas", 30.00),
         new FreteEstado(3, "Amapá", 35.00),
@@ -71,7 +71,7 @@ namespace Trabalho
 
         public static double RetornarFretePorEstado(string estado)
         {
-            foreach (var frete in fretes)
+            foreach (FreteEstado frete in fretes)
             {
                 if (frete.Estado == estado)
                 {
