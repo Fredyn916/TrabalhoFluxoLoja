@@ -81,7 +81,7 @@ namespace Trabalho
             }
             else
             {
-                Console.WriteLine("Guilherme é gay");
+                Console.WriteLine("vsfd");
                 return null;
             }
             return null;
@@ -140,13 +140,13 @@ namespace Trabalho
             string EstadoFinal = string.Empty;
             int idConsulta = -1;
 
-            GerenciadorFretes.Estados();
-
             while (true)
             {
+                GerenciadorFretes.Estados();
                 Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
                 if (!int.TryParse(Console.ReadLine(), out idConsulta))
                 {
+                    Console.Clear();
                     Console.WriteLine("Por favor, digite um número válido.");
                     continue;
                 }
@@ -160,23 +160,20 @@ namespace Trabalho
 
                 if (valorFrete != -1)
                 {
+
+                    Console.Clear();
                     Console.WriteLine($"O frete para o estado é de R${valorFrete}");
                     EstadoFinal = EstadosVenda(idConsulta);
                 }
                 else
                 {
+
+                    Console.Clear();
                     Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
                 }
-
-                GerenciadorFretes.Estados();
-
             }
-
             return EstadoFinal;
         }
-
-
-
 
         private void OpcoesDoUsuario()
         {
