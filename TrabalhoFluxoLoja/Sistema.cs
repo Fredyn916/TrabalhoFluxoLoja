@@ -18,13 +18,17 @@ namespace Trabalho
 
         public void InicializarSistema()
         {
+            List<Produto> carrinho = new List<Produto>();
             Usuario usuario;
             int opcao1 = -1;
+            string estado
             
             while(opcao1 != 0)
             {
+                // Tipo de venda
                 opcao1 = MenuInical();
 
+                // Login & Cadastro
                 if(opcao1 == 1)
                 {
                     usuario = Login();
@@ -33,6 +37,17 @@ namespace Trabalho
                 {
                     usuario = LoginOuCadastro();
                 }
+
+                // Escolha dos Produtos
+                if (opcao1 == 1)
+                {
+                    carrinho = Gerenciador.ProdutosEscolhidosFisicos();
+                }
+                else if (opcao1 == 2)
+                {
+                    carrinho = Gerenciador.ProdutosEscolhidosDigitais();
+                }
+                estado = ConsultarRetornarFrete();
             }
         }
 
@@ -117,7 +132,7 @@ namespace Trabalho
             return Gerenciador.BuscarUsuario(senha, id);
         }
 
-        public string Consultar()
+        public string ConsultarRetornarFrete()
         {
             string EstadoFinal = String.Empty;
             int idConsulta = -1;
@@ -138,7 +153,7 @@ namespace Trabalho
                     break;
                 }
 
-                double valorFrete = GerenciadorFretes.ConsultarFretePorId(idConsulta);
+                double valorFrete = GerenciadorFretes.RetornarFretePorId(idConsulta);
 
                 if (valorFrete != -1)
                 {

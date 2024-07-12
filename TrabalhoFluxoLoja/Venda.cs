@@ -15,9 +15,13 @@ namespace TrabalhoFluxoLoja
         private double ValorTotal { get; set; }
         private string Estado { get; set; }
 
-        public Venda(int id, Usuario usuario, double valorTotal, string estado)
+        public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
         {
             Id = id;
+            foreach(Produto produtoAdicionado in carrinho)
+            {
+                ProdutosComprados.Add(produtoAdicionado);
+            }
             Usuario = usuario;
             DataVenda = DateTime.Now;
             ValorTotal = valorTotal;

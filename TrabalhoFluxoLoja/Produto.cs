@@ -42,5 +42,10 @@ namespace TrabalhoFluxoLoja
         {
             return Preco;
         }
+
+        public void RetirarProdutoDoEstoque()
+        {
+            QuantidadeEstoque = QuantidadeEstoque - 1;
+        }
     }
 }

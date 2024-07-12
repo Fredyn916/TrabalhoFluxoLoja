@@ -13,9 +13,9 @@ namespace TrabalhoFluxoLoja
         {
             Quadro = new QuadroProdutos();
         }
-        
+
         public int CountUsuarios() => Quadro.UsuariosCadastrados.Count();
-        
+
         public void AdicionarUsuario()
         {
             Usuario x = CriarUsuario.CriarUmUsuario();
@@ -28,9 +28,9 @@ namespace TrabalhoFluxoLoja
             {
                 return false;
             }
-            foreach(Usuario x in Quadro.UsuariosCadastrados)
+            foreach (Usuario x in Quadro.UsuariosCadastrados)
             {
-                if(x.VerficarSenhaId(senha, id))
+                if (x.VerficarSenhaId(senha, id))
                 {
                     return true;
                 }
@@ -40,7 +40,7 @@ namespace TrabalhoFluxoLoja
 
         public Usuario BuscarUsuario(string senha, int id)
         {
-            foreach(Usuario x in Quadro.UsuariosCadastrados)
+            foreach (Usuario x in Quadro.UsuariosCadastrados)
             {
                 if (x.VerficarSenhaId(senha, id))
                 {
@@ -59,12 +59,10 @@ namespace TrabalhoFluxoLoja
         //    UsuariosCadastrados.Add(x);
         //}
 
-        public void RealizarVenda(Usuario usuario)
+        public void RealizarVenda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
         {
-            int Id = 0;
-            double ValorTotalVenda = 0.0;
-            string Estado = string.Empty;
-            DateTime DataVenda = DateTime.Now;
+            int Id = id;
+            Venda Venda = new Venda(Id, carrinho, usuario, valorTotal, estado);
         }
 
         public List<Produto> ProdutosEscolhidosFisicos()
@@ -79,13 +77,21 @@ namespace TrabalhoFluxoLoja
                 if (acao == 1)
                 {
                     Quadro.ListarProdutoFisico();
-                    while(id < 1 && id > 10)
+                    while (id < 1 && id > 10)
                     {
                         Console.WriteLine($"Digite o Id do produto que deseja selecionar");
                         id = int.Parse(Console.ReadLine());
                         if (id < 1 && id > 10)
                         {
                             Console.WriteLine("Digite um Id válido");
+                        }
+                        foreach (Produto p in Quadro.ProdutosEstoqueFisico)
+                        {
+                            if (p.Id == id)
+                            {
+                                p.RetirarProdutoDoEstoque();
+                                break;
+                            }
                         }
                     }
                     Produto produtoParaAdicionar = Quadro.BuscarProdutoFisicoPorId(id);
@@ -98,16 +104,6 @@ namespace TrabalhoFluxoLoja
             }
 
             return produtosEscolhidosFisicos;
-        }
-
-        public double RecolherValorDosProdutos(List<Produto> listaDosProdutos)
-        {
-            double valorTotal = 0.0;
-            foreach (Produto p in listaDosProdutos)
-            {
-                valorTotal = valorTotal + p.ValorProduto();
-            }
-            return valorTotal;
         }
 
         public List<Produto> ProdutosEscolhidosDigitais()
@@ -130,9 +126,18 @@ namespace TrabalhoFluxoLoja
                         {
                             Console.WriteLine("Digite um Id válido");
                         }
+                        foreach (Produto p in Quadro.ProdutosEstoqueDigital)
+                        {
+                            if(p.Id == id)
+                            {
+                                p.RetirarProdutoDoEstoque();
+                                break;
+                            }
+                        }
                     }
                     Produto produtoParaAdicionar = Quadro.BuscarProdutoDigitalPorId(id);
                     produtosEscolhidosDigitais.Add(produtoParaAdicionar);
+
                 }
                 else if (acao == 2)
                 {
@@ -143,18 +148,29 @@ namespace TrabalhoFluxoLoja
             return produtosEscolhidosDigitais;
         }
 
+        public double RetornaValorDosProdutosMaisFrete(List<Produto> listaDosProdutos, double valorFrete)
+        {
+            double valorTotal = 0.0;
+            foreach (Produto p in listaDosProdutos)
+            {
+                valorTotal = valorTotal + p.ValorProduto();
+            }
+            valorTotal = valorTotal + valorFrete;
+            return valorTotal;
+        }
+
         private int MenuEscolhaProdutos()
         {
             int escolha = 0;
 
-            while(escolha != 1 && escolha != 2)
+            while (escolha != 1 && escolha != 2)
             {
                 Console.WriteLine($"<----- ESCOLHA ----->");
                 Console.WriteLine($"1 - Escolher produto");
                 Console.WriteLine($"2 - Finalizar escolha");
                 Console.WriteLine($"<------------------->");
                 escolha = int.Parse(Console.ReadLine());
-                if(escolha != 1 && escolha != 2)
+                if (escolha != 1 && escolha != 2)
                 {
                     Console.WriteLine("Digite uma opção válida");
                 }
