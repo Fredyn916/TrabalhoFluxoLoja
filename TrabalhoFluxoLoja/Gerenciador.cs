@@ -77,10 +77,11 @@ namespace TrabalhoFluxoLoja
                 if (acao == 1)
                 {
                     Quadro.ListarProdutoFisico();
-                    while (id < 1 && id > 10)
+                    while (id < 1 || id > 10)
                     {
                         Console.WriteLine($"Digite o Id do produto que deseja selecionar");
                         id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Produto selecionado com sucesso");
                         if (id < 1 && id > 10)
                         {
                             Console.WriteLine("Digite um Id válido");
