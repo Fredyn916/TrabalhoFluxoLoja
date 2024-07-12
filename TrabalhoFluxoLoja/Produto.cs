@@ -37,5 +37,15 @@ namespace TrabalhoFluxoLoja
             Console.WriteLine($"Tamanho: {Tamanho}");
             Console.WriteLine($"Forma de Pagamento: {FormaPagamento}");
         }
+
+        public double ValorProduto()
+        {
+            return Preco;
+        }
+
+        public void RetirarProdutoDoEstoque()
+        {
+            QuantidadeEstoque = QuantidadeEstoque - 1;
+        }
     }
 }
