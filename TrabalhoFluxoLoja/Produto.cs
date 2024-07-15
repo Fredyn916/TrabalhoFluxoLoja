@@ -33,7 +33,7 @@ namespace TrabalhoFluxoLoja
             Console.WriteLine($"Id: {Id}");
             Console.WriteLine($"Marca: {Marca}");
             Console.WriteLine($"Modelo: {Nome}");
-            Console.WriteLine($"Preço: {Preco}");
+            Console.WriteLine($"Preço: R${Preco}");
             Console.WriteLine($"Quantidade no Estoque: {QuantidadeEstoque}");
             Console.WriteLine($"Tamanho: {Tamanho}");
             Console.WriteLine($"Forma de Pagamento: {FormaPagamento}");
