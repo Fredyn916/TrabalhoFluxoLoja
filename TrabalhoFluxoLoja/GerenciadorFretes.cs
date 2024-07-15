@@ -8,7 +8,7 @@ namespace Trabalho
 {
     public static class GerenciadorFretes
     {
-        private static  List<FreteEstado> frete = new List<FreteEstado> {
+        private static  List<FreteEstado> fretes = new List<FreteEstado> {
         new FreteEstado(1, "Acre", 50.00),
         new FreteEstado(2, "Alagoas", 30.00),
         new FreteEstado(3, "Amapá", 35.00),
