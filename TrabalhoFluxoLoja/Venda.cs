@@ -18,7 +18,7 @@ namespace TrabalhoFluxoLoja
         public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
         {
             Id = id;
-            foreach(Produto produtoAdicionado in carrinho)
+            foreach (Produto produtoAdicionado in carrinho)
             {
                 ProdutosComprados.Add(produtoAdicionado);
             }

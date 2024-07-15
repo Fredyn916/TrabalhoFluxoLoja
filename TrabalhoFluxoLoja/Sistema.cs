@@ -162,8 +162,8 @@ namespace Trabalho
                 EstadoFinal = EstadosVenda(idConsulta);
                 double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
 
-            if (valorFrete != -1)
-            {
+                if (valorFrete != -1)
+                {
                     Console.Clear();
                     Console.WriteLine($"O frete para o estado é de R${valorFrete}");
                 }

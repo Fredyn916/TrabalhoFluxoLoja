@@ -23,7 +23,7 @@ namespace TrabalhoFluxoLoja
 
         private void CadastroUsuarioLoja()
         {
-            UsuariosCadastrados.Add(new Usuario(10000, "Funcionário Loja", "funcionarios@loja.com", "loja123#","Centro Sabará - MG 34505-730"));
+            UsuariosCadastrados.Add(new Usuario(10000, "Funcionário Loja", "funcionarios@loja.com", "loja123#", "Centro Sabará - MG 34505-730"));
         }
 
         private void EstoqueProdutos()

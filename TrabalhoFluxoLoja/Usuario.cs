@@ -14,7 +14,7 @@ namespace TrabalhoFluxoLoja
         private string Password { get; set; }
         private string Endereco { get; set; }
 
-        public Usuario(int id, string nome, string email, string senha,string endereco)
+        public Usuario(int id, string nome, string email, string senha, string endereco)
         {
             Id = id;
             Nome = nome;
@@ -25,9 +25,9 @@ namespace TrabalhoFluxoLoja
 
         public bool VerficarSenhaId(string senha, int id)
         {
-            if(id == Id)
+            if (id == Id)
             {
-                if(senha == Password) return true;
+                if (senha == Password) return true;
                 else
                 {
                     return false;
