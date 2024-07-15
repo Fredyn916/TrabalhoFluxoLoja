@@ -193,7 +193,7 @@ namespace Trabalho
                     Estado = "Alagoas";
                     break;
                 case 3:
-                    Estado = "Amapa";
+                    Estado = "Amapá";
                     break;
                 case 4:
                     Estado = "Amazonas";
@@ -229,13 +229,13 @@ namespace Trabalho
                     Estado = "Paraíba";
                     break;
                 case 15:
-                    Estado = "paraná";
+                    Estado = "Paraná";
                     break;
                 case 16:
                     Estado = "Pernambuco";
                     break;
                 case 17:
-                    Estado = "Piaui";
+                    Estado = "Piauí";
                     break;
                 case 18:
                     Estado = "Rio de Janeiro";
