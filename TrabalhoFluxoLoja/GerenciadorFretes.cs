@@ -21,17 +21,17 @@ namespace Trabalho
         new FreteEstado(10, "Mato Grosso", 45.00),
         new FreteEstado(11, "Mato Grosso do Sul", 25.00),
         new FreteEstado(12, "Minas Gerais", 35.00),
-        new FreteEstado(13, "Pará ", 50.00),
+        new FreteEstado(13, "Pará", 50.00),
         new FreteEstado(14, "Paraíba", 30.00),
-        new FreteEstado(15, "paraná", 35.00),
+        new FreteEstado(15, "Paraná", 35.00),
         new FreteEstado(16, "Pernambuco", 45.00),
         new FreteEstado(17, "Piauí", 25.00),
         new FreteEstado(18, "Rio de Janeiro", 35.00),
         new FreteEstado(19, "Rio Grande do Norte", 50.00),
         new FreteEstado(20, "Rio Grande do Sul", 30.00),
-        new FreteEstado(21, "Rondônia ", 35.00),
-        new FreteEstado(22, "Roraima ", 45.00),
-        new FreteEstado(23, "Santa Catarina ", 30.00),
+        new FreteEstado(21, "Rondônia", 35.00),
+        new FreteEstado(22, "Roraima", 45.00),
+        new FreteEstado(23, "Santa Catarina", 30.00),
         new FreteEstado(24, "São Paulo", 39.00),
         new FreteEstado(25, "Sergipe", 36.00),
         new FreteEstado(26, "Tocantis", 33.00),
@@ -42,7 +42,7 @@ namespace Trabalho
         {
             Console.WriteLine("1 - Acre");
             Console.WriteLine("2 - Alagoas");
-            Console.WriteLine("3 - Amapa");
+            Console.WriteLine("3 - Amapá");
             Console.WriteLine("4 - Amazonas");
             Console.WriteLine("5 - Bahia");
             Console.WriteLine("6 - Ceará");
@@ -54,16 +54,16 @@ namespace Trabalho
             Console.WriteLine("12 - Minas Gerais");
             Console.WriteLine("13 - Pará");
             Console.WriteLine("14 - Paraíba");
-            Console.WriteLine("15 - paraná");
+            Console.WriteLine("15 - Paraná");
             Console.WriteLine("16 - Pernambuco");
-            Console.WriteLine("17 - Piaui");
+            Console.WriteLine("17 - Piauí");
             Console.WriteLine("18 - Rio de Janeiro");
             Console.WriteLine("19 - Rio Grande do Norte");
             Console.WriteLine("20 - Rio Grande do Sul");
             Console.WriteLine("21 - Rondônia");
             Console.WriteLine("22 - Roraima");
             Console.WriteLine("23 - Santa Catarina");
-            Console.WriteLine("24 - São Paulo ");
+            Console.WriteLine("24 - São Paulo");
             Console.WriteLine("25 - Sergipe");
             Console.WriteLine("26 - Tocantis");
             Console.WriteLine("27 - Maranhão");
