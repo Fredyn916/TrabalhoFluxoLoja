@@ -117,9 +117,9 @@ namespace Trabalho
             string senha = string.Empty;
             while (!verificacaoSenha)
             {
-                Console.WriteLine("Digite o número id:");
+                Console.WriteLine("Digite o número id da conta:");
                 id = int.Parse(Console.ReadLine());
-                Console.WriteLine("Digite a senha do login:");
+                Console.WriteLine("Digite a senha do login da conta:");
                 senha = Console.ReadLine();
                 if (Gerenciador.LoginSenha(senha, id))
                 {
