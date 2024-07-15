@@ -140,15 +140,16 @@ namespace Trabalho
             string EstadoFinal = string.Empty;
             int idConsulta = -1;
 
-            while (true)
+            while (idConsulta < 0 || idConsulta > 27)
             {
                 GerenciadorFretes.Estados();
                 Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
-                if (!int.TryParse(Console.ReadLine(), out idConsulta))
+                idConsulta = int.Parse(Console.ReadLine());
+
+                if (idConsulta < 1 || idConsulta > 27)
                 {
                     Console.Clear();
                     Console.WriteLine("Por favor, digite um número válido.");
-                    continue;
                 }
 
                 if (idConsulta == 0)
@@ -167,7 +168,6 @@ namespace Trabalho
                 }
                 else
                 {
-
                     Console.Clear();
                     Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
                 }
@@ -184,7 +184,7 @@ namespace Trabalho
 
         private string EstadosVenda(int id)
         {
-            string Estado = String.Empty;
+            string Estado = string.Empty;
             switch (id)
             {
                 case 1: Estado = "Acre";
