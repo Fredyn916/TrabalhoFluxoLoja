@@ -119,9 +119,9 @@ namespace Trabalho
             string senha = string.Empty;
             while (!verificacaoSenha)
             {
-                Console.WriteLine("Digite o número id:");
+                Console.WriteLine("Digite o número id da conta:");
                 id = int.Parse(Console.ReadLine());
-                Console.WriteLine("Digite a senha do login:");
+                Console.WriteLine("Digite a senha do login da conta:");
                 senha = Console.ReadLine();
                 if (Gerenciador.LoginSenha(senha, id))
                 {
@@ -142,29 +142,36 @@ namespace Trabalho
         {
             string EstadoFinal = string.Empty;
             int idConsulta = -1;
-
-            GerenciadorFretes.Estados();
-            Console.WriteLine("Digite o número do estado respectivo que deseja consultar");
-            if (!int.TryParse(Console.ReadLine(), out idConsulta))
+            while (idConsulta < 0 || idConsulta > 27)
             {
-                Console.Clear();
-                Console.WriteLine("Por favor, digite um número válido.");
-            }
+                GerenciadorFretes.Estados();
+                Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
+                idConsulta = int.Parse(Console.ReadLine());
 
-            double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
+                if (idConsulta < 1 || idConsulta > 27)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Por favor, digite um número válido.");
+                }
+
+                if (idConsulta == 0)
+                {
+                    break;
+                }
+
+                EstadoFinal = EstadosVenda(idConsulta);
+                double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
 
             if (valorFrete != -1)
             {
-
-                Console.Clear();
-                Console.WriteLine($"O frete para o estado é de R${valorFrete}");
-                EstadoFinal = EstadosVenda(idConsulta);
-            }
-            else
-            {
-
-                Console.Clear();
-                Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
+                    Console.Clear();
+                    Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Estado não encontrado. Por favor, digite um número válido de estado.");
+                }
             }
             return EstadoFinal;
         }
@@ -178,7 +185,7 @@ namespace Trabalho
 
         private string EstadosVenda(int id)
         {
-            string Estado = String.Empty;
+            string Estado = string.Empty;
             switch (id)
             {
                 case 1:
@@ -188,7 +195,7 @@ namespace Trabalho
                     Estado = "Alagoas";
                     break;
                 case 3:
-                    Estado = "Amapa";
+                    Estado = "Amapá";
                     break;
                 case 4:
                     Estado = "Amazonas";
@@ -224,13 +231,13 @@ namespace Trabalho
                     Estado = "Paraíba";
                     break;
                 case 15:
-                    Estado = "paraná";
+                    Estado = "Paraná";
                     break;
                 case 16:
                     Estado = "Pernambuco";
                     break;
                 case 17:
-                    Estado = "Piaui";
+                    Estado = "Piauí";
                     break;
                 case 18:
                     Estado = "Rio de Janeiro";

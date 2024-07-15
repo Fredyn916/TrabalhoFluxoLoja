@@ -83,22 +83,22 @@ namespace TrabalhoFluxoLoja
                         id = int.Parse(Console.ReadLine());
                         Console.Clear();
                         Console.WriteLine("Produto selecionado com sucesso");
-
-                        if (id < 1 && id > 10)
+                        if (id < 1 || id > 10)
                         {
                             Console.WriteLine("Digite um Id válido");
-                        }
-                        foreach (Produto p in Quadro.ProdutosEstoqueFisico)
-                        {
-                            if (p.Id == id)
-                            {
-                                p.RetirarProdutoDoEstoque();
-                                break;
-                            }
                         }
                     }
                     Produto produtoParaAdicionar = Quadro.BuscarProdutoFisicoPorId(id);
                     produtosEscolhidosFisicos.Add(produtoParaAdicionar);
+                    foreach (Produto p in Quadro.ProdutosEstoqueFisico)
+                    {
+                        if (p.Id == id)
+                        {
+                            p.RetirarProdutoDoEstoque();
+                            break;
+                        }
+                    }
+                    id = -1;
                 }
                 else if (acao == 2)
                 {
@@ -130,18 +130,19 @@ namespace TrabalhoFluxoLoja
                         {
                             Console.WriteLine("Digite um Id válido");
                         }
-                        foreach (Produto p in Quadro.ProdutosEstoqueDigital)
-                        {
-                            if(p.Id == id)
-                            {
-                                p.RetirarProdutoDoEstoque();
-                                id = -1;
-                                break;
-                            }
-                        }
                     }
                     Produto produtoParaAdicionar = Quadro.BuscarProdutoDigitalPorId(id);
                     produtosEscolhidosDigitais.Add(produtoParaAdicionar);
+                    foreach (Produto p in Quadro.ProdutosEstoqueDigital)
+                    {
+                        if (p.Id == id)
+                        {
+                            p.RetirarProdutoDoEstoque();
+                            id = -1;
+                            break;
+                        }
+                    }
+                    id = -1;
 
                 }
                 else if (acao == 2)
