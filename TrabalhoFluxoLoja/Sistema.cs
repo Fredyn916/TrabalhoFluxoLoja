@@ -41,9 +41,8 @@ namespace Trabalho
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
 
-                Console.WriteLine("<----------------------------->");
+                Console.WriteLine("<----------------- ESTADOS ------------------>");
                 estado = ConsultarRetornarFrete();
-                Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
                 Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
@@ -66,12 +65,12 @@ namespace Trabalho
         public Usuario LoginOuCadastro()
         {
             int acao = -1;
-            Console.WriteLine("<-------------------------------->");
+            Console.WriteLine("<----------- LOGIN & CADASTRO ----------->");
             while (acao != 1 && acao != 2)
             {
                 Console.WriteLine("1 - Logar");
                 Console.WriteLine("2 - Cadastrar");
-                Console.WriteLine("<-------------------------------->");
+                Console.WriteLine("<---------------------------------------->");
                 acao = int.Parse(Console.ReadLine());
 
                 if (acao != 1 && acao != 2)
@@ -148,7 +147,7 @@ namespace Trabalho
             Console.WriteLine("1 - Boleto");
             Console.WriteLine("2 - Pix");
             Console.WriteLine("3 - Cartão de Crédito");
-            Console.WriteLine("<-------------------------------->");
+            Console.WriteLine("<---------------------------------->");
 
             acao = int.Parse(Console.ReadLine());
             while (acao != 1 && acao != 2 && acao != 3)
@@ -209,6 +208,7 @@ namespace Trabalho
             while (idConsulta < 0 || idConsulta > 27)
             {
                 GerenciadorFretes.Estados();
+                Console.WriteLine("<-------------------------------------------->");
                 Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
                 idConsulta = int.Parse(Console.ReadLine());
 
