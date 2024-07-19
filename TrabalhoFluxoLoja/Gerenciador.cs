@@ -58,6 +58,7 @@ namespace TrabalhoFluxoLoja
             Venda Venda = new Venda(Id, carrinho, usuario, valorTotal, estado, formaDePagamento);
             Venda.NovoIdVenda(usuario);
             Console.WriteLine($"<--- Compra Realizada com Sucesso! --->");
+            Venda.DetalhesDaVenda();
         }
 
         public List<Produto> ProdutosEscolhidosFisicos()

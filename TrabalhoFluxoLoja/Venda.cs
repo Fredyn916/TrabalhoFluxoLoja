@@ -41,9 +41,22 @@ namespace TrabalhoFluxoLoja
             AlterarIdVenda(novoID);
         }
 
-        public void DetalhesDaVenda()
+        public virtual void DetalhesDaVenda()
         {
-
+            Console.WriteLine($"<-------- Detalhes da Compra --------->");
+            Console.WriteLine($"//------- PRODUTO(S) COMPRADO(S) --------//");
+            foreach (Produto produto in ProdutosComprados)
+            {
+                produto.ExibirDetalhes();
+                Console.WriteLine($"----------------------------------");
+            }
+            Console.WriteLine($"//-----------------------------------//");
+            Console.WriteLine($"Usuário: {Usuario.Nome}");
+            Console.WriteLine($"Data da Venda: {DataVenda}");
+            Console.WriteLine($"Valor Total da Venda: R${ValorTotal}");
+            Console.WriteLine($"Estado: {Estado}");
+            Console.WriteLine($"Forma de Pagamento: {FormgaDePagamento}");
+            Console.WriteLine($"<----------------------------------------->");
         }
     }
 }

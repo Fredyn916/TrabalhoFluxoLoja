@@ -27,20 +27,11 @@ namespace Trabalho
 
             while (opcao1 != 0)
             {
+                Usuario = LoginOuCadastro();
                 // Tipo de venda
                 opcao1 = MenuInical();
                 Console.Clear();
-                // Login & Cadastro
-                if (opcao1 == 1)
-                {
-                    Usuario = Login();
-                }
-                else if (opcao1 == 2)
-                {
-                    Usuario = LoginOuCadastro();
-                }
-
-                // Escolha dos Produtos
+                // Funcionalidades
                 if (opcao1 == 1)
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosFisicos();
@@ -48,6 +39,14 @@ namespace Trabalho
                 else if (opcao1 == 2)
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
+                }
+                else if (opcao1 == 3)
+                {
+                    // Consultar Frete
+                }
+                else if (opcao1 == 4)
+                {
+                    HistoricoDeCompras.HistoricoDeComprasRealizadas(Usuario);
                 }
                 Console.WriteLine("<----------------------------->");
                 estado = ConsultarRetornarFrete();
@@ -60,7 +59,7 @@ namespace Trabalho
             }
         }
 
-        private Usuario LoginOuCadastro()
+        public Usuario LoginOuCadastro()
         {
             int acao = -1;
             Console.WriteLine("<-------------------------------->");
@@ -87,7 +86,7 @@ namespace Trabalho
             }
             else
             {
-                Console.WriteLine("vsfd");
+                Console.WriteLine("Guilherme gay");
                 return null;
             }
             return null;
@@ -99,15 +98,17 @@ namespace Trabalho
             Console.WriteLine("<------- BEM VINDO À LOJA ------->");
             Console.WriteLine("1 - Compra de um Produto Físico");
             Console.WriteLine("2 - Compra de um Produto Digital");
+            Console.WriteLine("3 - Consultar Frete");
+            Console.WriteLine("4 - Histórico de Compras");
             Console.WriteLine("0 - Sair do Sistema");
             Console.WriteLine("<-------------------------------->");
 
             acao = int.Parse(Console.ReadLine());
-            while (acao != 1 && acao != 2 && acao != 0)
+            while (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
             {
 
                 acao = int.Parse(Console.ReadLine());
-                if (acao != 1 && acao != 2 && acao != 0)
+                if (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
                 {
                     Console.WriteLine("Digite uma opção válida.");
                 }
@@ -213,13 +214,6 @@ namespace Trabalho
                 }
             }
             return EstadoFinal;
-        }
-
-        private void OpcoesDoUsuario()
-        {
-            Console.WriteLine("Digite o numero da opção desejada");
-            Console.WriteLine("1 - Consulta de Frete");
-
         }
 
         private string EstadosVenda(int id)

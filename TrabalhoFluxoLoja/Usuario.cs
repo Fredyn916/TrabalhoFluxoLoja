@@ -9,11 +9,11 @@ namespace TrabalhoFluxoLoja
     public class Usuario
     {
         public int Id { get; set; }
-        private string Nome { get; set; }
+        public string Nome { get; set; }
         private string Email { get; set; }
         private string Password { get; set; }
         private string Endereco { get; set; }
-        public List<Produto> Compras { get; set; }
+        public List<Venda> Compras { get; set; }
 
         public Usuario(int id, string nome, string email, string senha, string endereco)
         {
