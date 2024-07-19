@@ -4,6 +4,4 @@ using TrabalhoFluxoLoja;
 
 Sistema s = new Sistema();
 
-
-
 s.InicializarSistema();
