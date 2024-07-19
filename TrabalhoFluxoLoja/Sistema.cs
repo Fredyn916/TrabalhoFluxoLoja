@@ -10,6 +10,7 @@ namespace Trabalho
 {
     public class Sistema
     {
+        private Usuario Usuario {  get; set; }
         public Gerenciador Gerenciador { get; set; }
         public Sistema()
         {
@@ -19,27 +20,18 @@ namespace Trabalho
         public void InicializarSistema()
         {
             List<Produto> carrinho = new List<Produto>();
-            Usuario usuario;
             int opcao1 = -1;
             string estado = string.Empty;
             double valorTotal = 0.0;
+            string formaDePagamento = string.Empty;
 
             while (opcao1 != 0)
             {
+                Usuario = LoginOuCadastro();
                 // Tipo de venda
                 opcao1 = MenuInical();
                 Console.Clear();
-                // Login & Cadastro
-                if (opcao1 == 1)
-                {
-                    usuario = Login();
-                }
-                else if (opcao1 == 2)
-                {
-                    usuario = LoginOuCadastro();
-                }
-
-                // Escolha dos Produtos
+                // Funcionalidades
                 if (opcao1 == 1)
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosFisicos();
@@ -48,15 +40,30 @@ namespace Trabalho
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
+
                 Console.WriteLine("<----------------------------->");
                 estado = ConsultarRetornarFrete();
                 Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
+                Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
+                formaDePagamento = MenuPagamento();
+
+                Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
+
+                opcao1 = MenuFuncionalidades();
+                if (opcao1 == 1)
+                {
+                    // Consultar Frete
+                }
+                else if (opcao1 == 2)
+                {
+                    HistoricoDeCompras.HistoricoDeComprasRealizadas(Usuario);
+                }
             }
         }
 
-        private Usuario LoginOuCadastro()
+        public Usuario LoginOuCadastro()
         {
             int acao = -1;
             Console.WriteLine("<-------------------------------->");
@@ -83,7 +90,7 @@ namespace Trabalho
             }
             else
             {
-                Console.WriteLine("vsfd");
+                Console.WriteLine("Guilherme gay");
                 return null;
             }
             return null;
@@ -109,6 +116,63 @@ namespace Trabalho
                 }
             }
             return acao;
+        }
+
+        private int MenuFuncionalidades()
+        {
+            int acao = -1;
+            Console.WriteLine("<------- FUNCIONALIDADES ------->");
+            Console.WriteLine("1 - Consultar Frete");
+            Console.WriteLine("2 - Histórico de Compras");
+            Console.WriteLine("0 - Sair do Sistema");
+            Console.WriteLine("<------------------------------->");
+
+            acao = int.Parse(Console.ReadLine());
+            while (acao != 1 && acao != 2 && acao != 0)
+            {
+
+                acao = int.Parse(Console.ReadLine());
+                if (acao != 1 && acao != 2 && acao != 0)
+                {
+                    Console.WriteLine("Digite uma opção válida.");
+                }
+            }
+            return acao;
+        }
+
+        private string MenuPagamento()
+        {
+            string formaDePagamento = string.Empty;
+            int acao = -1;
+            Console.WriteLine("<------- FORMA DE PAGAMENTO ------->");
+            Console.WriteLine("1 - Boleto");
+            Console.WriteLine("2 - Pix");
+            Console.WriteLine("3 - Cartão de Crédito");
+            Console.WriteLine("<-------------------------------->");
+
+            acao = int.Parse(Console.ReadLine());
+            while (acao != 1 && acao != 2 && acao != 3)
+            {
+
+                acao = int.Parse(Console.ReadLine());
+                if (acao != 1 && acao != 2 && acao != 3)
+                {
+                    Console.WriteLine("Digite uma opção válida.");
+                }
+            }
+            if(acao == 1)
+            {
+                formaDePagamento = "Boleto";
+            }
+            else if(acao == 2)
+            {
+                formaDePagamento = "Pix";
+            }
+            else if (acao == 2)
+            {
+                formaDePagamento = "Cartão de Crédito";
+            }
+            return formaDePagamento;
         }
 
         private Usuario Login()
@@ -162,8 +226,8 @@ namespace Trabalho
                 EstadoFinal = EstadosVenda(idConsulta);
                 double valorFrete = GerenciadorFretes.RetornarFretePorEstado(EstadoFinal);
 
-            if (valorFrete != -1)
-            {
+                if (valorFrete != -1)
+                {
                     Console.Clear();
                     Console.WriteLine($"O frete para o estado é de R${valorFrete}");
                 }
@@ -174,13 +238,6 @@ namespace Trabalho
                 }
             }
             return EstadoFinal;
-        }
-
-        private void OpcoesDoUsuario()
-        {
-            Console.WriteLine("Digite o numero da opção desejada");
-            Console.WriteLine("1 - Consulta de Frete");
-
         }
 
         private string EstadosVenda(int id)

@@ -14,11 +14,12 @@ namespace TrabalhoFluxoLoja
         private DateTime DataVenda { get; set; }
         private double ValorTotal { get; set; }
         private string Estado { get; set; }
+        private string FormaDePagamento {  get; set; }
 
-        public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
+        public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado, string formgaDePagamento)
         {
             Id = id;
-            foreach(Produto produtoAdicionado in carrinho)
+            foreach (Produto produtoAdicionado in carrinho)
             {
                 ProdutosComprados.Add(produtoAdicionado);
             }
@@ -26,11 +27,36 @@ namespace TrabalhoFluxoLoja
             DataVenda = DateTime.Now;
             ValorTotal = valorTotal;
             Estado = estado;
+            FormaDePagamento = formgaDePagamento;
         }
 
         public void AlterarIdVenda(int id)
         {
             Id = id;
+        }
+
+        public void NovoIdVenda(Usuario x)
+        {
+            int novoID = Usuario.Compras.Max(x => x.Id) + 1;
+            AlterarIdVenda(novoID);
+        }
+
+        public virtual void DetalhesDaVenda()
+        {
+            Console.WriteLine($"<-------- Detalhes da Compra --------->");
+            Console.WriteLine($"//------- PRODUTO(S) COMPRADO(S) --------//");
+            foreach (Produto produto in ProdutosComprados)
+            {
+                produto.ExibirDetalhes();
+                Console.WriteLine($"----------------------------------");
+            }
+            Console.WriteLine($"//-----------------------------------//");
+            Console.WriteLine($"Usuário: {Usuario.Nome}");
+            Console.WriteLine($"Data da Venda: {DataVenda}");
+            Console.WriteLine($"Valor Total da Venda: R${ValorTotal}");
+            Console.WriteLine($"Estado: {Estado}");
+            Console.WriteLine($"Forma de Pagamento: {FormaDePagamento}");
+            Console.WriteLine($"<----------------------------------------->");
         }
     }
 }

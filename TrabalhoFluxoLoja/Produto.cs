@@ -16,7 +16,7 @@ namespace TrabalhoFluxoLoja
         private int Tamanho { get; set; }
         private string FormaPagamento { get; set; }
 
-        public Produto(int id, string marca,string nome, double preco, int quantidadeEstoque, int tamanho, string formaPagamento)
+        public Produto(int id, string marca, string nome, double preco, int quantidadeEstoque, int tamanho, string formaPagamento)
         {
             Id = id;
             Marca = marca;
