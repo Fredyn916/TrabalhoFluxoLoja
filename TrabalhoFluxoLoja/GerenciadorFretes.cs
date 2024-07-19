@@ -81,5 +81,57 @@ namespace Trabalho
 
             return 0;
         }
+
+
+        public static double ConsultarFretePorId(int id)
+        {
+            string estado = EstadosVenda(id);
+
+            foreach (FreteEstado frete in fretes)
+            {
+                if (frete.Estado == estado)
+                {
+                    return frete.ValorFrete;
+                }
+            }
+
+            return 0;
+        }
+
+        private static string EstadosVenda(int id)
+        {
+            switch (id)
+            {
+                case 1: return "Acre";
+                case 2: return "Alagoas";
+                case 3: return "Amapá";
+                case 4: return "Amazonas";
+                case 5: return "Bahia";
+                case 6: return "Ceará";
+                case 7: return "Distrito Federal";
+                case 8: return "Espírito Santo";
+                case 9: return "Goiás";
+                case 10: return "Mato Grosso";
+                case 11: return "Mato Grosso do Sul";
+                case 12: return "Minas Gerais";
+                case 13: return "Pará";
+                case 14: return "Paraíba";
+                case 15: return "Paraná";
+                case 16: return "Pernambuco";
+                case 17: return "Piauí";
+                case 18: return "Rio de Janeiro";
+                case 19: return "Rio Grande do Norte";
+                case 20: return "Rio Grande do Sul";
+                case 21: return "Rondônia";
+                case 22: return "Roraima";
+                case 23: return "Santa Catarina";
+                case 24: return "São Paulo";
+                case 25: return "Sergipe";
+                case 26: return "Tocantis";
+                case 27: return "Maranhão";
+                default: throw new ArgumentException("ID de estado inválido.");
+            }
+        }
+
     }
 }
