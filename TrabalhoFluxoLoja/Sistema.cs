@@ -240,7 +240,7 @@ namespace Trabalho
             return EstadoFinal;
         }
 
-       public void ConsultarFrete()
+        public void ConsultarFrete()
         {
             GerenciadorFretes.Estados();
             Console.WriteLine("digite o estado que deseja consultar ");
