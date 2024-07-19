@@ -54,10 +54,7 @@ namespace Trabalho
                 opcao1 = MenuFuncionalidades();
                 if (opcao1 == 1)
                 {
-                    GerenciadorFretes.Estados();
-                    Console.WriteLine("digite o estado que deseja consultar ");
-                    int Frete = int.Parse(Console.ReadLine());
-                    GerenciadorFretes.ConsultarFretePorId(Frete);
+                    ConsultarFrete();
                 }
                 else if (opcao1 == 2)
                 {
@@ -243,7 +240,14 @@ namespace Trabalho
             return EstadoFinal;
         }
 
-       
+       public void ConsultarFrete()
+        {
+            GerenciadorFretes.Estados();
+            Console.WriteLine("digite o estado que deseja consultar ");
+            int Frete = int.Parse(Console.ReadLine());
+            double valorFrete = GerenciadorFretes.ConsultarFretePorId(Frete);
+            Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+        }
 
         private string EstadosVenda(int id)
         {
