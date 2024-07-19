@@ -41,9 +41,8 @@ namespace Trabalho
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
 
-                Console.WriteLine("<----------------------------->");
+                Console.WriteLine("<----------------- ESTADOS ------------------>");
                 estado = ConsultarRetornarFrete();
-                Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
                 Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
@@ -209,6 +208,7 @@ namespace Trabalho
             while (idConsulta < 0 || idConsulta > 27)
             {
                 GerenciadorFretes.Estados();
+                Console.WriteLine("<-------------------------------------------->");
                 Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
                 idConsulta = int.Parse(Console.ReadLine());
 
