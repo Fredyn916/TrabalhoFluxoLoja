@@ -10,15 +10,8 @@ namespace TrabalhoFluxoLoja
     {
         public static void HistoricoDeComprasRealizadas(Usuario x)
         {
-            int qntVenda;
-            if (x.Compras.Count() < 1)
-            {
-                qntVenda = 0;
-            }
-            else
-            {
-                qntVenda = x.Compras.Count();
-            }
+            int qntVenda = x.Compras.Count();
+
             if (qntVenda > 0)
             {
                 int ContadorVendas = 0;

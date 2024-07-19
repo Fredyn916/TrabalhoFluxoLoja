@@ -17,6 +17,7 @@ namespace TrabalhoFluxoLoja
 
         public Usuario(int id, string nome, string email, string senha, string endereco)
         {
+            Compras = new List<Venda>();
             Id = id;
             Nome = nome;
             Email = email;

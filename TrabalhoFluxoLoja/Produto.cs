@@ -14,9 +14,8 @@ namespace TrabalhoFluxoLoja
         private double Preco { get; set; }
         private int QuantidadeEstoque { get; set; }
         private int Tamanho { get; set; }
-        private string FormaPagamento { get; set; }
 
-        public Produto(int id, string marca, string nome, double preco, int quantidadeEstoque, int tamanho, string formaPagamento)
+        public Produto(int id, string marca, string nome, double preco, int quantidadeEstoque, int tamanho)
         {
             Id = id;
             Marca = marca;
@@ -24,7 +23,6 @@ namespace TrabalhoFluxoLoja
             Preco = preco;
             QuantidadeEstoque = quantidadeEstoque;
             Tamanho = tamanho;
-            FormaPagamento = formaPagamento;
         }
 
         public virtual void ExibirDetalhes()
@@ -36,7 +34,6 @@ namespace TrabalhoFluxoLoja
             Console.WriteLine($"Preço: R${Preco}");
             Console.WriteLine($"Quantidade no Estoque: {QuantidadeEstoque}");
             Console.WriteLine($"Tamanho: {Tamanho}");
-            Console.WriteLine($"Forma de Pagamento: {FormaPagamento}");
         }
 
         public double ValorProduto()

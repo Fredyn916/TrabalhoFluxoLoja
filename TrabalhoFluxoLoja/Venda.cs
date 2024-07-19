@@ -18,6 +18,8 @@ namespace TrabalhoFluxoLoja
 
         public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado, string formgaDePagamento)
         {
+            ProdutosComprados = new List<Produto>();
+
             Id = id;
             foreach (Produto produtoAdicionado in carrinho)
             {
@@ -37,12 +39,13 @@ namespace TrabalhoFluxoLoja
 
         public void NovoIdVenda(Usuario x)
         {
-            int novoID = Usuario.Compras.Max(x => x.Id) + 1;
+            int novoID = Usuario.Compras.Count > 0 ? Usuario.Compras.Max(x => x.Id) + 1 : 1;
             AlterarIdVenda(novoID);
         }
 
         public virtual void DetalhesDaVenda()
         {
+            Console.Clear();
             Console.WriteLine($"<-------- Detalhes da Compra --------->");
             Console.WriteLine($"//------- PRODUTO(S) COMPRADO(S) --------//");
             foreach (Produto produto in ProdutosComprados)

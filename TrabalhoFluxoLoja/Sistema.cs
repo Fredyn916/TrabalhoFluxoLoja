@@ -66,12 +66,12 @@ namespace Trabalho
         public Usuario LoginOuCadastro()
         {
             int acao = -1;
-            Console.WriteLine("<-------------------------------->");
+            Console.WriteLine("<----------- LOGIN & CADASTRO ----------->");
             while (acao != 1 && acao != 2)
             {
                 Console.WriteLine("1 - Logar");
                 Console.WriteLine("2 - Cadastrar");
-                Console.WriteLine("<-------------------------------->");
+                Console.WriteLine("<---------------------------------------->");
                 acao = int.Parse(Console.ReadLine());
 
                 if (acao != 1 && acao != 2)
@@ -148,7 +148,7 @@ namespace Trabalho
             Console.WriteLine("1 - Boleto");
             Console.WriteLine("2 - Pix");
             Console.WriteLine("3 - Cartão de Crédito");
-            Console.WriteLine("<-------------------------------->");
+            Console.WriteLine("<---------------------------------->");
 
             acao = int.Parse(Console.ReadLine());
             while (acao != 1 && acao != 2 && acao != 3)
