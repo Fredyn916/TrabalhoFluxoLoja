@@ -14,7 +14,7 @@ namespace TrabalhoFluxoLoja
         private DateTime DataVenda { get; set; }
         private double ValorTotal { get; set; }
         private string Estado { get; set; }
-        private string FormgaDePagamento {  get; set; }
+        private string FormaDePagamento {  get; set; }
 
         public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado, string formgaDePagamento)
         {
@@ -27,7 +27,7 @@ namespace TrabalhoFluxoLoja
             DataVenda = DateTime.Now;
             ValorTotal = valorTotal;
             Estado = estado;
-            FormgaDePagamento = formgaDePagamento;
+            FormaDePagamento = formgaDePagamento;
         }
 
         public void AlterarIdVenda(int id)
@@ -55,7 +55,7 @@ namespace TrabalhoFluxoLoja
             Console.WriteLine($"Data da Venda: {DataVenda}");
             Console.WriteLine($"Valor Total da Venda: R${ValorTotal}");
             Console.WriteLine($"Estado: {Estado}");
-            Console.WriteLine($"Forma de Pagamento: {FormgaDePagamento}");
+            Console.WriteLine($"Forma de Pagamento: {FormaDePagamento}");
             Console.WriteLine($"<----------------------------------------->");
         }
     }

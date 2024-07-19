@@ -40,22 +40,26 @@ namespace Trabalho
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
                 }
-                else if (opcao1 == 3)
-                {
-                    // Consultar Frete
-                }
-                else if (opcao1 == 4)
-                {
-                    HistoricoDeCompras.HistoricoDeComprasRealizadas(Usuario);
-                }
+
                 Console.WriteLine("<----------------------------->");
                 estado = ConsultarRetornarFrete();
                 Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
+                Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
                 formaDePagamento = MenuPagamento();
 
                 Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
+
+                opcao1 = MenuFuncionalidades();
+                if (opcao1 == 1)
+                {
+                    // Consultar Frete
+                }
+                else if (opcao1 == 2)
+                {
+                    HistoricoDeCompras.HistoricoDeComprasRealizadas(Usuario);
+                }
             }
         }
 
@@ -98,17 +102,37 @@ namespace Trabalho
             Console.WriteLine("<------- BEM VINDO À LOJA ------->");
             Console.WriteLine("1 - Compra de um Produto Físico");
             Console.WriteLine("2 - Compra de um Produto Digital");
-            Console.WriteLine("3 - Consultar Frete");
-            Console.WriteLine("4 - Histórico de Compras");
             Console.WriteLine("0 - Sair do Sistema");
             Console.WriteLine("<-------------------------------->");
 
             acao = int.Parse(Console.ReadLine());
-            while (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
+            while (acao != 1 && acao != 2 && acao != 0)
             {
 
                 acao = int.Parse(Console.ReadLine());
-                if (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
+                if (acao != 1 && acao != 2 && acao != 0)
+                {
+                    Console.WriteLine("Digite uma opção válida.");
+                }
+            }
+            return acao;
+        }
+
+        private int MenuFuncionalidades()
+        {
+            int acao = -1;
+            Console.WriteLine("<------- FUNCIONALIDADES ------->");
+            Console.WriteLine("1 - Consultar Frete");
+            Console.WriteLine("2 - Histórico de Compras");
+            Console.WriteLine("0 - Sair do Sistema");
+            Console.WriteLine("<------------------------------->");
+
+            acao = int.Parse(Console.ReadLine());
+            while (acao != 1 && acao != 2 && acao != 0)
+            {
+
+                acao = int.Parse(Console.ReadLine());
+                if (acao != 1 && acao != 2 && acao != 0)
                 {
                     Console.WriteLine("Digite uma opção válida.");
                 }
