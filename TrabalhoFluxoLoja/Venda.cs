@@ -14,8 +14,9 @@ namespace TrabalhoFluxoLoja
         private DateTime DataVenda { get; set; }
         private double ValorTotal { get; set; }
         private string Estado { get; set; }
+        private string FormgaDePagamento {  get; set; }
 
-        public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
+        public Venda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado, string formgaDePagamento)
         {
             Id = id;
             foreach (Produto produtoAdicionado in carrinho)
@@ -26,11 +27,23 @@ namespace TrabalhoFluxoLoja
             DataVenda = DateTime.Now;
             ValorTotal = valorTotal;
             Estado = estado;
+            FormgaDePagamento = formgaDePagamento;
         }
 
         public void AlterarIdVenda(int id)
         {
             Id = id;
+        }
+
+        public void NovoIdVenda(Usuario x)
+        {
+            int novoID = Usuario.Compras.Max(x => x.Id) + 1;
+            AlterarIdVenda(novoID);
+        }
+
+        public void DetalhesDaVenda()
+        {
+
         }
     }
 }

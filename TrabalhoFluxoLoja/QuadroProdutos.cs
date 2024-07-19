@@ -55,6 +55,7 @@ namespace TrabalhoFluxoLoja
         {
             int novoID = UsuariosCadastrados.Max(x => x.Id) + 1;
             x.AlterarIdUsuario(novoID);
+            Console.WriteLine($"<--- Seu id de login é: {novoID} --->");
             UsuariosCadastrados.Add(x);
         }
 

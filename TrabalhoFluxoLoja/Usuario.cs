@@ -13,6 +13,7 @@ namespace TrabalhoFluxoLoja
         private string Email { get; set; }
         private string Password { get; set; }
         private string Endereco { get; set; }
+        public List<Produto> Compras { get; set; }
 
         public Usuario(int id, string nome, string email, string senha, string endereco)
         {

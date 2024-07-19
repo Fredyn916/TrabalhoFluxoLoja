@@ -52,17 +52,12 @@ namespace TrabalhoFluxoLoja
 
         // VENDA
 
-        //public void AdicionarUsuario(Usuario x) (MÉTODO PARA ALTERAR ID DA LISTA DAS COMPRAS)
-        //{
-        //    int novoID = UsuariosCadastrados.Max(x => x.Id) + 1;
-        //    x.AlterarIdUsuario(novoID);
-        //    UsuariosCadastrados.Add(x);
-        //}
-
-        public void RealizarVenda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado)
+        public void RealizarVenda(int id, List<Produto> carrinho, Usuario usuario, double valorTotal, string estado, string formaDePagamento)
         {
             int Id = id;
-            Venda Venda = new Venda(Id, carrinho, usuario, valorTotal, estado);
+            Venda Venda = new Venda(Id, carrinho, usuario, valorTotal, estado, formaDePagamento);
+            Venda.NovoIdVenda(usuario);
+            Console.WriteLine($"<--- Compra Realizada com Sucesso! --->");
         }
 
         public List<Produto> ProdutosEscolhidosFisicos()
@@ -122,11 +117,13 @@ namespace TrabalhoFluxoLoja
                 if (acao == 1)
                 {
                     Quadro.ListarProdutoDigital();
-                    while (id < 1 && id > 10)
+                    while (id < 1 || id > 10)
                     {
                         Console.WriteLine($"Digite o Id do produto que deseja selecionar");
                         id = int.Parse(Console.ReadLine());
-                        if (id < 1 && id > 10)
+                        Console.Clear();
+                        Console.WriteLine("Produto selecionado com sucesso");
+                        if (id < 1 || id > 10)
                         {
                             Console.WriteLine("Digite um Id válido");
                         }

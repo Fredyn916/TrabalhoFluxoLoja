@@ -10,6 +10,7 @@ namespace Trabalho
 {
     public class Sistema
     {
+        private Usuario Usuario {  get; set; }
         public Gerenciador Gerenciador { get; set; }
         public Sistema()
         {
@@ -19,10 +20,10 @@ namespace Trabalho
         public void InicializarSistema()
         {
             List<Produto> carrinho = new List<Produto>();
-            Usuario usuario;
             int opcao1 = -1;
             string estado = string.Empty;
             double valorTotal = 0.0;
+            string formaDePagamento = string.Empty;
 
             while (opcao1 != 0)
             {
@@ -32,11 +33,11 @@ namespace Trabalho
                 // Login & Cadastro
                 if (opcao1 == 1)
                 {
-                    usuario = Login();
+                    Usuario = Login();
                 }
                 else if (opcao1 == 2)
                 {
-                    usuario = LoginOuCadastro();
+                    Usuario = LoginOuCadastro();
                 }
 
                 // Escolha dos Produtos
@@ -53,6 +54,9 @@ namespace Trabalho
                 Console.WriteLine("<----------------------------->");
                 double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
                 valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
+                formaDePagamento = MenuPagamento();
+
+                Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
             }
         }
 
@@ -109,6 +113,41 @@ namespace Trabalho
                 }
             }
             return acao;
+        }
+
+        private string MenuPagamento()
+        {
+            string formaDePagamento = string.Empty;
+            int acao = -1;
+            Console.WriteLine("<------- FORMA DE PAGAMENTO ------->");
+            Console.WriteLine("1 - Boleto");
+            Console.WriteLine("2 - Pix");
+            Console.WriteLine("3 - Cartão de Crédito");
+            Console.WriteLine("<-------------------------------->");
+
+            acao = int.Parse(Console.ReadLine());
+            while (acao != 1 && acao != 2 && acao != 3)
+            {
+
+                acao = int.Parse(Console.ReadLine());
+                if (acao != 1 && acao != 2 && acao != 3)
+                {
+                    Console.WriteLine("Digite uma opção válida.");
+                }
+            }
+            if(acao == 1)
+            {
+                formaDePagamento = "Boleto";
+            }
+            else if(acao == 2)
+            {
+                formaDePagamento = "Pix";
+            }
+            else if (acao == 2)
+            {
+                formaDePagamento = "Cartão de Crédito";
+            }
+            return formaDePagamento;
         }
 
         private Usuario Login()
