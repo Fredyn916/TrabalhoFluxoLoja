@@ -27,7 +27,7 @@ namespace TrabalhoFluxoLoja
 
         public virtual void ExibirDetalhes()
         {
-            Console.WriteLine($"---------- PRODUTO {Id} ----------");
+            Console.WriteLine($"----------- PRODUTO {Id} ------------");
             Console.WriteLine($"Id: {Id}");
             Console.WriteLine($"Marca: {Marca}");
             Console.WriteLine($"Modelo: {Nome}");
