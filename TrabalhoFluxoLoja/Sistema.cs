@@ -24,10 +24,15 @@ namespace Trabalho
             string estado = string.Empty;
             double valorTotal = 0.0;
             string formaDePagamento = string.Empty;
+            bool verificacaoLogin = false;
 
             while (opcao1 != 0)
             {
-                Usuario = LoginOuCadastro();
+                if (!verificacaoLogin)
+                {
+                    Usuario = LoginOuCadastro();
+                }
+                verificacaoLogin = true;
                 // Tipo de venda
                 opcao1 = MenuInical();
                 Console.Clear();
@@ -35,27 +40,28 @@ namespace Trabalho
                 if (opcao1 == 1)
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosFisicos();
+                    estado = ConsultarRetornarFrete();
+                    double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
+                    valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
+                    Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
+                    formaDePagamento = MenuPagamento();
+                    Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
                 }
                 else if (opcao1 == 2)
                 {
                     carrinho = Gerenciador.ProdutosEscolhidosDigitais();
+                    estado = ConsultarRetornarFrete();
+                    double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
+                    valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
+                    Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
+                    formaDePagamento = MenuPagamento();
+                    Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
                 }
-
-                Console.WriteLine("<----------------- ESTADOS ------------------>");
-                estado = ConsultarRetornarFrete();
-                double frete = GerenciadorFretes.RetornarFretePorEstado(estado);
-                valorTotal = Gerenciador.RetornaValorDosProdutosMaisFrete(carrinho, frete);
-                Console.WriteLine($"Valor Total da Compra + Frete: R${valorTotal}");
-                formaDePagamento = MenuPagamento();
-
-                Gerenciador.RealizarVenda(0, carrinho, Usuario, valorTotal, estado, formaDePagamento);
-
-                opcao1 = MenuFuncionalidades();
-                if (opcao1 == 1)
+                else if (opcao1 == 3)
                 {
                     ConsultarFrete();
                 }
-                else if (opcao1 == 2)
+                else if (opcao1 == 4)
                 {
                     HistoricoDeCompras.HistoricoDeComprasRealizadas(Usuario);
                 }
@@ -98,47 +104,27 @@ namespace Trabalho
         private int MenuInical()
         {
             int acao = -1;
-            Console.WriteLine("<------- BEM VINDO À LOJA ------->");
+            Console.WriteLine("<------- FUNCIONALIDADES LOJA ------->");
             Console.WriteLine("1 - Compra de um Produto Físico");
             Console.WriteLine("2 - Compra de um Produto Digital");
+            Console.WriteLine("3 - Consultar Frete");
+            Console.WriteLine("4 - Histórico de Compras");
             Console.WriteLine("0 - Sair do Sistema");
-            Console.WriteLine("<-------------------------------->");
+            Console.WriteLine("<------------------------------------>");
 
             acao = int.Parse(Console.ReadLine());
-            while (acao != 1 && acao != 2 && acao != 0)
+            while (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
             {
 
                 acao = int.Parse(Console.ReadLine());
-                if (acao != 1 && acao != 2 && acao != 0)
+                if (acao != 1 && acao != 2 && acao != 3 && acao != 4 && acao != 0)
                 {
                     Console.WriteLine("Digite uma opção válida.");
                 }
             }
             return acao;
         }
-
-        private int MenuFuncionalidades()
-        {
-            int acao = -1;
-            Console.WriteLine("<------- FUNCIONALIDADES ------->");
-            Console.WriteLine("1 - Consultar Frete");
-            Console.WriteLine("2 - Histórico de Compras");
-            Console.WriteLine("0 - Sair do Sistema");
-            Console.WriteLine("<------------------------------->");
-
-            acao = int.Parse(Console.ReadLine());
-            while (acao != 1 && acao != 2 && acao != 0)
-            {
-
-                acao = int.Parse(Console.ReadLine());
-                if (acao != 1 && acao != 2 && acao != 0)
-                {
-                    Console.WriteLine("Digite uma opção válida.");
-                }
-            }
-            return acao;
-        }
-
+        
         private string MenuPagamento()
         {
             string formaDePagamento = string.Empty;
@@ -207,9 +193,11 @@ namespace Trabalho
             int idConsulta = -1;
             while (idConsulta < 0 || idConsulta > 27)
             {
+                Console.Clear();
+                Console.WriteLine("<------------ SELECIONAR ESTADO ------------->");
                 GerenciadorFretes.Estados();
                 Console.WriteLine("<-------------------------------------------->");
-                Console.WriteLine("Digite o número do estado respectivo que deseja consultar (digite 0 para sair)");
+                Console.WriteLine("Digite o número do id respectivo ao estado distinatário:");
                 idConsulta = int.Parse(Console.ReadLine());
 
                 if (idConsulta < 1 || idConsulta > 27)
@@ -242,11 +230,14 @@ namespace Trabalho
 
         public void ConsultarFrete()
         {
+            Console.WriteLine("<------------- CONSULTAR FRETE -------------->");
             GerenciadorFretes.Estados();
-            Console.WriteLine("digite o estado que deseja consultar ");
+            Console.WriteLine("<-------------------------------------------->");
+            Console.WriteLine("Digite o id do estado que deseja consultar");
             int Frete = int.Parse(Console.ReadLine());
             double valorFrete = GerenciadorFretes.ConsultarFretePorId(Frete);
             Console.WriteLine($"O frete para o estado é de R${valorFrete}");
+            Console.WriteLine("<-------------------------------------------->");
         }
 
         private string EstadosVenda(int id)
